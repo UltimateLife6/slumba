@@ -89,7 +89,7 @@ export default function Home() {
                 transition={{ delay: 0.2 }}
                 whileHover={{ scale: 1.1, rotate: 5 }}
               >
-                <span className="text-base font-bold text-white">✨ NEW COLLECTION 2024 ✨</span>
+                <span className="text-base font-bold text-white">✨ NEW COLLECTION 2026 ✨</span>
               </motion.div>
               
               <div className="relative inline-block mb-4">
