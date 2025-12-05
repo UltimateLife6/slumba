@@ -23,15 +23,37 @@ html {
 }
 
 body {
-  background: linear-gradient(135deg, #FFE4E1 0%, #E0F7FA 30%, #F3E5F5 60%, #FFF0F5 100%);
-  background-attachment: fixed;
+  background: #40E0D0;
   background-image: 
-    radial-gradient(circle at 20% 50%, rgba(255, 105, 180, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(147, 112, 219, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 40% 20%, rgba(64, 224, 208, 0.1) 0%, transparent 50%);
+    radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.1) 0%, transparent 50%);
   color: var(--foreground);
   font-family: var(--font-fredoka), 'Comic Sans MS', cursive, sans-serif;
   overflow-x: hidden;
+  position: relative;
+}
+
+/* Wavy side borders */
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 50px;
+  z-index: 100;
+  pointer-events: none;
+  background: #1e9b8a;
+}
+
+body::before {
+  left: 0;
+  clip-path: polygon(0 0, 100% 8%, 100% 18%, 0 28%, 0 38%, 100% 48%, 100% 58%, 0 68%, 0 78%, 100% 88%, 100% 100%, 0 100%);
+}
+
+body::after {
+  right: 0;
+  clip-path: polygon(0 8%, 100% 0, 100% 28%, 0 18%, 0 48%, 100% 38%, 100% 68%, 0 58%, 0 88%, 100% 78%, 100% 100%, 0 100%);
 }
 
 @keyframes float {
@@ -69,4 +91,75 @@ body {
 
 .animate-bounce-slow {
   animation: bounce 2s ease-in-out infinite;
+}
+
+/* Text outline effect */
+.text-outline-purple-pink {
+  color: #9370DB;
+  -webkit-text-stroke: 5px #FF69B4;
+  text-stroke: 5px #FF69B4;
+  paint-order: stroke fill;
+  text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.15);
+}
+
+.text-outline-pink-purple {
+  color: #FF69B4;
+  -webkit-text-stroke: 5px #9370DB;
+  text-stroke: 5px #9370DB;
+  paint-order: stroke fill;
+  text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.15);
+}
+
+.text-outline-orange-yellow {
+  color: #FF8C00;
+  -webkit-text-stroke: 5px #FFD700;
+  text-stroke: 5px #FFD700;
+  paint-order: stroke fill;
+  text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.15);
+}
+
+/* Blob shape */
+.blob-shape {
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  animation: blob 8s ease-in-out infinite;
+}
+
+@keyframes blob {
+  0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+  25% { border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%; }
+  50% { border-radius: 30% 70% 70% 30% / 70% 30% 30% 70%; }
+  75% { border-radius: 70% 30% 70% 30% / 30% 70% 30% 70%; }
+}
+
+/* Wavy border using SVG mask */
+.wavy-border {
+  position: relative;
+}
+
+.wavy-border-blue::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  background: #1e9b8a;
+  z-index: -1;
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M0,0 L100,8 L100,18 L0,28 L0,38 L100,48 L100,58 L0,68 L0,78 L100,88 L100,100 L0,100 Z' fill='black'/%3E%3C/svg%3E");
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M0,0 L100,8 L100,18 L0,28 L0,38 L100,48 L100,58 L0,68 L0,78 L100,88 L100,100 L0,100 Z' fill='black'/%3E%3C/svg%3E");
+  -webkit-mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+}
+
+.wavy-border-yellow::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  background: #FFD700;
+  z-index: -1;
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M5,0 L0,5 L5,10 L0,15 L5,20 L0,25 L5,30 L0,35 L5,40 L0,45 L5,50 L0,55 L5,60 L0,65 L5,70 L0,75 L5,80 L0,85 L5,90 L0,95 L5,100 L100,95 L95,90 L100,85 L95,80 L100,75 L95,70 L100,65 L95,60 L100,55 L95,50 L100,45 L95,40 L100,35 L95,30 L100,25 L95,20 L100,15 L95,10 L100,5 L95,0 Z' fill='black'/%3E%3C/svg%3E");
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M5,0 L0,5 L5,10 L0,15 L5,20 L0,25 L5,30 L0,35 L5,40 L0,45 L5,50 L0,55 L5,60 L0,65 L5,70 L0,75 L5,80 L0,85 L5,90 L0,95 L5,100 L100,95 L95,90 L100,85 L95,80 L100,75 L95,70 L100,65 L95,60 L100,55 L95,50 L100,45 L95,40 L100,35 L95,30 L100,25 L95,20 L100,15 L95,10 L100,5 L95,0 Z' fill='black'/%3E%3C/svg%3E");
+  -webkit-mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
 }

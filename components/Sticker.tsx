@@ -47,3 +47,4 @@ export default function Sticker({ children, delay = 0, className = "", size = "m
   );
 }
 
+
